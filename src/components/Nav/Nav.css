@@ -1,0 +1,23 @@
+.NavContainer {
+  border-bottom: 2px solid rgb(98, 183, 253);
+  display: flex;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  height: 70px;
+  justify-content: space-between;
+}
+
+.NavContainer * {
+  color: grey;
+  letter-spacing: .3rem;
+  margin: auto;
+  text-decoration: none;
+}
+
+.AppLogo {
+  color: rgb(0, 140, 255);
+  font-size: 2rem;
+}
+
+.RouteLinks * {
+  padding: 0 5rem;
+}
