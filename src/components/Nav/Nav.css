@@ -1,0 +1,12 @@
+.NavContainer {
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+}
+
+.RouteLinks {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
