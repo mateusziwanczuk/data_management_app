@@ -1,12 +1,11 @@
 import React from 'react';
-import { InputType } from 'zlib';
-import { InputProps } from './types';
+import { InputProps } from './_types';
 
 export const Container: React.FC = (props) => {
   return (
     <div 
         style={{
-            margin: '0 auto',
+            margin: '0 auto 10%',
             width: '60vw',
         }}
     >
@@ -54,6 +53,25 @@ export const Label: React.FC = (props) => {
   );
 }
 
+export const LabelRadio: React.FC = (props) => {
+  return (
+    <label
+        style={{
+          border: '1px solid lightgrey',
+          color: 'grey',
+          display: 'flex',
+          fontSize: '.8rem',
+          letterSpacing: '.1rem',
+          margin: '.5rem 2rem 2rem 0',
+          padding: '.5rem 1rem',
+          textTransform: 'uppercase',
+        }}
+    >
+      {props.children}
+    </label>
+  );
+}
+
 export const Input: React.FC<InputProps> = (props) => {
   return (
     <input
@@ -69,5 +87,37 @@ export const Input: React.FC<InputProps> = (props) => {
         type={props.type}
         value={props.value}
     />
+  );
+}
+
+export const InputRadio: React.FC<InputProps> = (props) => {
+  return (
+    <input
+        style={{
+          margin: 'auto auto auto 1rem',
+        }}
+        name={props.name}
+        type={'radio'}
+        value={props.value}
+    />
+  );
+}
+
+export const Button: React.FC = (props) => {
+  return (
+    <button
+        style={{
+          background: 'rgb(98, 183, 253)',
+          border: 'none',
+          boxShadow: '0 0 5px lightgrey',
+          color: 'white',
+          cursor: 'pointer',
+          letterSpacing: '.2rem',
+          padding: '.5rem 1rem',
+          width: '200px',
+        }}
+    >
+      {props.children}
+    </button>
   );
 }

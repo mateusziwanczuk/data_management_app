@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageHeader } from '../PageHeader/PageHeader'
-import { Container, FlexContainer, Label, Input } from '../UIElements/UIElements';
+import { Container, FlexContainer, Label, LabelRadio, Input, InputRadio, Button } from '../../UIElements/Components';
 import './NewOrderForm.css'
 
 export const NewOrderForm: React.FC = () => {
@@ -31,25 +31,22 @@ export const NewOrderForm: React.FC = () => {
               <Input name="order_number" />
             </Label>
           </FlexContainer>
-
-          Order type
+          <span className={'OrderTypeHeader'}>Order type</span>
           <FlexContainer>
-            <label>Standard
-              <Input type="radio" name="order_type" value="standard" />
-            </label>
-            <label>Priority
-              <Input type="radio" name="order_type" value="priority" />
-            </label>
+            <LabelRadio>Standard
+              <InputRadio name="order_type" value="standard" />
+            </LabelRadio>
+            <LabelRadio>Priority
+              <InputRadio name="order_type" value="priority" />
+            </LabelRadio>
           </FlexContainer>
-
           <Label>Consultant
             <Input name="consultant" />
           </Label>
           <Label>Transfer fee
             <Input name="transfer_fee" />
           </Label>
-
-          <button>SUBMIT</button>
+          <Button>SUBMIT</Button>
         </form>
       </Container>
     </>

@@ -7,10 +7,14 @@
 }
 
 .NavContainer * {
-  color: grey;
+  color: rgb(170, 170, 170);
   letter-spacing: .3rem;
   margin: auto;
   text-decoration: none;
+}
+
+.RouteLinks *:hover {
+  border-bottom: 1px solid lightgrey;
 }
 
 .AppLogo {
@@ -19,5 +23,5 @@
 }
 
 .RouteLinks * {
-  padding: 0 3rem;
+  margin: 0 3rem;
 }
