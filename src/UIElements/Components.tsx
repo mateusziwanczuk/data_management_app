@@ -86,6 +86,8 @@ export const Input: React.FC<InputProps> = (props) => {
         name={props.name}
         type={props.type}
         value={props.value}
+        required={props.required}
+        onChange={props.onChange}
     />
   );
 }
@@ -113,7 +115,7 @@ export const Button: React.FC = (props) => {
           color: 'white',
           cursor: 'pointer',
           letterSpacing: '.2rem',
-          padding: '.5rem 1rem',
+          padding: '.7rem 0',
           width: '200px',
         }}
     >

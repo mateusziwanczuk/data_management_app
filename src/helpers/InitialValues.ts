@@ -1,0 +1,13 @@
+import { NewOrderValues } from "../types/types";
+
+export const InitialFormValues: NewOrderValues = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    service_expire_date: '',
+    client_number: '',
+    order_number: '',
+    order_type: 'standard',
+    consultant: '',
+    transfer_fee: '',
+}

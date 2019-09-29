@@ -4,7 +4,7 @@ import './Nav.css'
 export const Nav: React.FC = () => {
   return (
     <div className={'NavContainer'}>
-      <a className={'AppLogo'} href='/'>DMA</a>
+      <a href='/' className={'AppLogo'}>DMA</a>
       <div className={'RouteLinks'}>
         <a href='/new-order'>NEW ORDER</a>
         <a href='/sta-table'>STA ORDERS</a>
