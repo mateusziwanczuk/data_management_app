@@ -4,12 +4,13 @@ import './Nav.css'
 export const Nav: React.FC = () => {
   return (
     <div className={'NavContainer'}>
-      <a href='/'>DMA</a>
+      <a className={'AppLogo'} href='/'>DMA</a>
       <div className={'RouteLinks'}>
-        <a href='/create-user'>CREATE USER</a>
-        <a href='/users-table'>USERS TABLE</a>
+        <a href='/new-order'>NEW ORDER</a>
+        <a href='/sta-table'>STA ORDERS</a>
+        <a href='/pri-table'>PRI ORDERS</a>
       </div>
-      <span>SIGN IN</span>
+      <a>SIGN IN</a>
     </div>
   );
 }

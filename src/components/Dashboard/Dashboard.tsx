@@ -1,9 +1,10 @@
 import React from 'react';
 import { PageHeader } from '../PageHeader/PageHeader'
 
-export const UsersTable: React.FC = () => {
+export const Dashboard = () => {
   return (
-    <PageHeader title={'Users table'} />
+    <>
+        <PageHeader title={'Dashboard'} />
+    </>
   );
 }
-
