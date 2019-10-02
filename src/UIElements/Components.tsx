@@ -88,6 +88,7 @@ export const Input: React.FC<InputProps> = (props) => {
         value={props.value}
         required={props.required}
         onChange={props.onChange}
+        placeholder={props.placeholder}
     />
   );
 }
@@ -122,4 +123,17 @@ export const Button: React.FC = (props) => {
       {props.children}
     </button>
   );
+}
+
+export const Error: React.FC = (props) => {
+  return (
+    <span
+      style={{
+        color: 'red',
+        fontSize: '10px',
+      }}  
+    >
+      {props.children}
+    </span>
+  )
 }

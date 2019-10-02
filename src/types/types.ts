@@ -5,7 +5,6 @@ export interface NewOrderValues {
     service_expire_date: string;
     client_number: string;
     order_number: string;
-    order_type: "standard" | "priority";
-    consultant: string;
+    order_type: "standard" | "priority" | '';
     transfer_fee: string;
 }

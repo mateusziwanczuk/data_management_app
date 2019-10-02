@@ -7,7 +7,6 @@ export const InitialFormValues: NewOrderValues = {
     service_expire_date: '',
     client_number: '',
     order_number: '',
-    order_type: 'standard',
-    consultant: '',
+    order_type: '',
     transfer_fee: '',
 }

@@ -1,4 +1,4 @@
-export const formatInputFeeValues = (value: string) => {
+export const formatInputFeeValue = (value: string) => {
     const inputValue = value
         .replace(/,/, '.')
         .replace(/[^\d.]/g, '')
@@ -18,4 +18,8 @@ export const formatInputFeeValues = (value: string) => {
             ? removeAllDots(inputValue)
             : removeAllDotsExceptFirstOne(inputValue)
         : inputValue
+}
+
+export const formatDateValue = (value: string) => {
+    return value.replace(/[^\d/]/g, '')
 }

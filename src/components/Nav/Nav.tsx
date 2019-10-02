@@ -10,7 +10,7 @@ export const Nav: React.FC = () => {
         <a href='/sta-table'>STA ORDERS</a>
         <a href='/pri-table'>PRI ORDERS</a>
       </div>
-      <a>SIGN IN</a>
+      <a href='/'>SIGN IN</a>
     </div>
   );
 }
