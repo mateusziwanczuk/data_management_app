@@ -33,6 +33,7 @@ export const NewOrderForm: React.FC = () => {
       && isDateValid(service_expire_date)
       && client_number.length > 0
       && order_number.length > 0
+      && order_type.length > 0
       && transfer_fee.length > 0
       ? handleFormValidation(true)
       : handleFormValidation(false)
@@ -93,13 +94,15 @@ export const NewOrderForm: React.FC = () => {
           <span className={'OrderTypeHeader'}>Order type</span>
           <FlexContainer>
             <LabelRadio>Standard
-              <InputRadio name="order_type" value="standard" />
+              <InputRadio name="order_type" value="standard" onChange={handleInputChange}/>
             </LabelRadio>
             <LabelRadio>Priority
-              <InputRadio name="order_type" value="priority" />
+              <InputRadio name="order_type" value="priority" onChange={handleInputChange}/>
             </LabelRadio>
           </FlexContainer>
-
+          <Label>
+            { isFormValid === false && showValidationError(order_type) }
+          </Label>
           <Label>Transfer fee
             <Input 
               name="transfer_fee" 

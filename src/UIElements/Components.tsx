@@ -62,7 +62,7 @@ export const LabelRadio: React.FC = (props) => {
           display: 'flex',
           fontSize: '.8rem',
           letterSpacing: '.1rem',
-          margin: '.5rem 2rem 2rem 0',
+          margin: '.5rem 2rem 0 0',
           padding: '.5rem 1rem',
           textTransform: 'uppercase',
         }}
@@ -102,6 +102,8 @@ export const InputRadio: React.FC<InputProps> = (props) => {
         name={props.name}
         type={'radio'}
         value={props.value}
+        checked={props.checked}
+        onChange={props.onChange}
     />
   );
 }
