@@ -1,11 +1,13 @@
 import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from 'react-router';
-import { AuthContext } from './Auth';
+import { AuthContext, ChildComponentProps } from './Auth';
 import { AuthPanel, AuthLabel, AuthInput, AuthButton, AuthForm, AuthText } from '../UIElements/Components';
 import { PageHeader } from '../components/PageHeader/PageHeader';
-import firebase from 'firebase';
+import * as firebase from 'firebase';
+import 'firebase/auth';
+import 'firebase/firestore';
 
-const SignUp = ({ history }: any) => {
+const SignUp: React.SFC<ChildComponentProps> = ({ history }) => {
     const handleSignUp = useCallback(
         async event => {
             event.preventDefault();
@@ -38,7 +40,7 @@ const SignUp = ({ history }: any) => {
                     password
                     <AuthInput name='password' type='password' placeholder='password'/>
                 </AuthLabel>
-                <AuthButton>Sign up</AuthButton>
+                <AuthButton>SIGN UP</AuthButton>
                 <AuthText
                     onClick={() => history.push('/sign-in')}
                 >

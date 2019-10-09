@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import * as firebase from 'firebase/app';
 import { Route } from 'react-router-dom';
 import { Nav } from './components/Nav/Nav';
 import { NewOrderForm } from './components/NewOrderForm/NewOrderForm';
 import { UsersTable } from './components/UsersTable/UsersTable';
 import { AuthProvider } from './auth/Auth';
+import { User } from 'firebase/app';
 import SignUp from './auth/SignUp';
 import SignIn from './auth/SignIn';
+import firebase from 'firebase/app';
 import './App.css';
 
 firebase.initializeApp({
@@ -21,12 +22,18 @@ firebase.initializeApp({
 });
 
 export const App: React.FC = () => {
+  const [user, signUser] = useState<User | null>(null)
+
+  useEffect(() => {
+      firebase.auth().onAuthStateChanged(signUser);
+  }, []);
+  
   return (
     <AuthProvider>
-      <Nav/>
-      <Route exact path="/" component={NewOrderForm} />
-      <Route exact path="/sta-table" component={UsersTable} />
-      <Route exact path="/pri-table" component={UsersTable} />
+      <Nav />
+      <Route exact path="/" component={user ? NewOrderForm : SignIn} />
+      <Route exact path="/sta-table" component={user ? UsersTable : SignIn} />
+      <Route exact path="/pri-table" component={user ? UsersTable : SignIn} />
       <Route exact path="/sign-in" component={SignIn} />
       <Route exact path="/sign-up" component={SignUp} />
     </AuthProvider>

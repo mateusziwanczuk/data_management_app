@@ -1,5 +1,7 @@
+import { FormEventHandler, MouseEventHandler } from "react";
+
 export interface FormProps {
-  onSubmit: any;
+  onSubmit: FormEventHandler;
 }
 
 export interface InputProps {
@@ -7,11 +9,11 @@ export interface InputProps {
   type?: string;
   value?: string;
   required?: boolean;
-  onChange?: any;
+  onChange?: FormEventHandler;
   placeholder?: string;
   checked?: boolean;
 }
 
 export interface AuthTextProps {
-  onClick?: any;
+  onClick?: MouseEventHandler;
 }

@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import firebase, { User } from 'firebase';
+import * as firebase from 'firebase';
+import { User } from 'firebase';
+import 'firebase/auth';
+import 'firebase/firestore';
+import { History } from 'history';
+
+export interface ChildComponentProps {
+    history : History
+}
 
 export const AuthContext = React.createContext({});
 
-export const AuthProvider = ({ children }: any) => {
+export const AuthProvider: React.FC = (props) => {
     const [currentUser, setCurrentUser] = useState<User | null>(null)
 
     useEffect(() => {
@@ -12,7 +20,7 @@ export const AuthProvider = ({ children }: any) => {
 
     return (
         <AuthContext.Provider value={{currentUser}}>
-            { children }
+            { props.children }
         </AuthContext.Provider>
     )
 }
