@@ -1,3 +1,7 @@
+export interface FormProps {
+  onSubmit: any;
+}
+
 export interface InputProps {
   name: string;
   type?: string;
@@ -6,4 +10,8 @@ export interface InputProps {
   onChange?: any;
   placeholder?: string;
   checked?: boolean;
+}
+
+export interface AuthTextProps {
+  onClick?: any;
 }

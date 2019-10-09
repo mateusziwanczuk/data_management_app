@@ -25,3 +25,11 @@
 .RouteLinks * {
   margin: 0 3rem;
 }
+
+.userNav {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-size: .7rem;
+  letter-spacing: 0;
+}

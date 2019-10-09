@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as firebase from 'firebase/app';
-import { Route } from 'react-router-dom'
-import { Nav } from './components/Nav/Nav'
-import { Dashboard } from './components/Dashboard/Dashboard';
+import { Route } from 'react-router-dom';
+import { Nav } from './components/Nav/Nav';
 import { NewOrderForm } from './components/NewOrderForm/NewOrderForm';
-import { UsersTable } from './components/UsersTable/UsersTable'
-import './App.css';
+import { UsersTable } from './components/UsersTable/UsersTable';
 import { AuthProvider } from './auth/Auth';
 import SignUp from './auth/SignUp';
 import SignIn from './auth/SignIn';
+import './App.css';
 
 firebase.initializeApp({
   apiKey: "AIzaSyAAzDqfQJzeZ3AIHe79F499V1EJDWxKMGM",
@@ -25,11 +24,9 @@ export const App: React.FC = () => {
   return (
     <AuthProvider>
       <Nav/>
-      <Route exact path="/" component={Dashboard} />
-      <Route exact path="/new-order" component={NewOrderForm} />
+      <Route exact path="/" component={NewOrderForm} />
       <Route exact path="/sta-table" component={UsersTable} />
       <Route exact path="/pri-table" component={UsersTable} />
-      
       <Route exact path="/sign-in" component={SignIn} />
       <Route exact path="/sign-up" component={SignUp} />
     </AuthProvider>

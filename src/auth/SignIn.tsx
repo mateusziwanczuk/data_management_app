@@ -1,7 +1,9 @@
 import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from 'react-router';
 import { AuthContext } from './Auth';
+import { AuthPanel, AuthLabel, AuthInput, AuthButton, AuthForm, AuthText } from '../UIElements/Components';
 import firebase from 'firebase';
+import { PageHeader } from '../components/PageHeader/PageHeader';
 
 const SignIn = ({ history }: any) => {
     const handleSignIn = useCallback(
@@ -25,20 +27,25 @@ const SignIn = ({ history }: any) => {
     if (currentUser) return <Redirect to='/' />
 
     return (
-        <div>
-            <h1>Sign in</h1>
-            <form onSubmit={handleSignIn}>
-                <label>
+        <AuthPanel>
+            <AuthForm onSubmit={handleSignIn}>
+                <PageHeader title={'SIGN IN'} />
+                <AuthLabel>
                     email
-                    <input name='email' placeholder='email'/>
-                </label>
-                <label>
+                    <AuthInput name='email' placeholder='email'/>
+                </AuthLabel>
+                <AuthLabel>
                     password
-                    <input name='password' type='password' placeholder='password'/>
-                </label>
-                <button type='submit'>Sign in</button>
-            </form>
-        </div>
+                    <AuthInput name='password' type='password' placeholder='password'/>
+                </AuthLabel>
+                <AuthButton>Sign in</AuthButton>
+                <AuthText
+                    onClick={() => history.push('/sign-up')}
+                >
+                    I don't have account yet.
+                </AuthText>
+            </AuthForm>
+        </AuthPanel>
     )
 }
 

@@ -1,11 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { PageHeader } from '../PageHeader/PageHeader'
-import { Container, FlexContainer, Label, LabelRadio, Input, InputRadio, Button, Error } from '../../UIElements/Components';
+import { PageHeader } from '../PageHeader/PageHeader';
+import { Container, FlexContainer, Label, LabelRadio, Input, InputRadio, Button, Error, Form } from '../../UIElements/Components';
 import { InitialFormValues } from '../../helpers/InitialValues.helpers';
-import { NewOrderValues } from '../../types/types'
+import { NewOrderValues } from '../../types/types';
 import { formatInputFeeValue, formatDateValue } from '../../helpers/InputFormatters.helpers';
 import { isDateValid } from '../../helpers/InputValidation.helpers';
-import './NewOrderForm.css'
+import './NewOrderForm.css';
 
 export const NewOrderForm: React.FC = () => {
   const [inputsValues, setInputsValues] = useState<NewOrderValues>(InitialFormValues);
@@ -53,7 +53,7 @@ export const NewOrderForm: React.FC = () => {
     <>
       <PageHeader title={'New order'} />
       <Container>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <FlexContainer>
             <Label>First name
               <Input 
@@ -113,7 +113,7 @@ export const NewOrderForm: React.FC = () => {
             { isFormValid === false && showValidationError(formatInputFeeValue(transfer_fee)) }
           </Label>
           <Button>SUBMIT</Button>
-        </form>
+        </Form>
       </Container>
     </>
   );

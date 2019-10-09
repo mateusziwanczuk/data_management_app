@@ -1,38 +1,53 @@
-import React, { useCallback } from 'react';
-import { withRouter } from 'react-router';
-import firebase from 'firebase'
+import React, { useCallback, useContext } from 'react';
+import { withRouter, Redirect } from 'react-router';
+import { AuthContext } from './Auth';
+import { AuthPanel, AuthLabel, AuthInput, AuthButton, AuthForm, AuthText } from '../UIElements/Components';
+import { PageHeader } from '../components/PageHeader/PageHeader';
+import firebase from 'firebase';
 
 const SignUp = ({ history }: any) => {
-    const handleSignUp = useCallback(async event => {
-        event.preventDefault();
+    const handleSignUp = useCallback(
+        async event => {
+            event.preventDefault();
+            const { email, password } = event.target.elements;
+            try {
+                await firebase
+                    .auth()
+                    .createUserWithEmailAndPassword(email.value, password.value);
+                    history.push('/');
+            } 
+            catch (error) {
+                alert(error)
+            }
+        }, [history]
+    )
 
-        const { email, password } = event.target.elements;
+    const { currentUser }: any = useContext(AuthContext);
 
-        try {
-            await firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
-            history.push('/')
-        } 
-        catch (error) {
-            alert(error)
-        }
-    }, [history]);
+    if (currentUser) return <Redirect to='/' />
 
     return (
-        <div>
-            <h1>Sign up</h1>
-            <form onSubmit={handleSignUp}>
-                <label>
+        <AuthPanel>
+            <AuthForm onSubmit={handleSignUp}>
+                <PageHeader title={'SIGN UP'} />
+                <AuthLabel>
                     email
-                    <input name='email' placeholder='email'/>
-                </label>
-                <label>
+                    <AuthInput name='email' placeholder='email'/>
+                </AuthLabel>
+                <AuthLabel>
                     password
-                    <input name='password' type='password' placeholder='password'/>
-                </label>
-                <button type='submit'>Sign up</button>
-            </form>
-        </div>
+                    <AuthInput name='password' type='password' placeholder='password'/>
+                </AuthLabel>
+                <AuthButton>Sign up</AuthButton>
+                <AuthText
+                    onClick={() => history.push('/sign-in')}
+                >
+                    I have account already.
+                </AuthText>
+            </AuthForm>
+        </AuthPanel>
     )
 }
 
 export default withRouter(SignUp)
+

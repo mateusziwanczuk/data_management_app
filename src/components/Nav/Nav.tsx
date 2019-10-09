@@ -1,28 +1,38 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../auth/Auth';
+import { Icon } from 'react-icons-kit';
+import { userTimes } from 'react-icons-kit/fa/userTimes';
+import { userPlus } from 'react-icons-kit/fa/userPlus';
 import firebase from 'firebase';
 import './Nav.css';
-import { Redirect } from 'react-router';
 
 export const Nav: React.FC = () => {
   const { currentUser }: any = useContext(AuthContext)
 
   const signOut = () => {
-    firebase.auth().signOut()
-      .then(() => <Redirect to='/' />)
-  }
+		firebase.auth().signOut();
+	}
 
   return (
     <div className={'NavContainer'}>
       <a href='/' className={'AppLogo'}>DMA</a>
       <div className={'RouteLinks'}>
-        <a href='/new-order'>NEW ORDER</a>
-        <a href='/sta-table'>STA ORDERS</a>
-        <a href='/pri-table'>PRI ORDERS</a>
+        <a href={currentUser ? '/' : '/sign-in'}>NEW ORDER</a>
+        <a href={currentUser ? '/sta-table' : '/sign-in'}>STA ORDERS</a>
+        <a href={currentUser ? '/pri-table' : '/sign-in'}>PRI ORDERS</a>
       </div>
       {!currentUser 
-        ? <a href='/sign-in'>SIGN IN</a>
-        : <span onClick={signOut}>SIGN OUT</span>
+        ? (
+        <div className={'userNav'}>
+            <Icon icon={userPlus} size={28} />
+            <a href='/sign-in'>SIGN IN</a>
+          </div>
+        ) : (
+          <div className={'userNav'} onClick={signOut}>
+            <Icon icon={userTimes} size={28} />
+            <span>{currentUser.email}</span>
+          </div>
+        )
       }
     </div>
   );
