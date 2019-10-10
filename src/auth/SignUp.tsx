@@ -3,9 +3,7 @@ import { withRouter, Redirect } from 'react-router';
 import { AuthContext, ChildComponentProps } from './Auth';
 import { AuthPanel, AuthLabel, AuthInput, AuthButton, AuthForm, AuthText } from '../UIElements/Components';
 import { PageHeader } from '../components/PageHeader/PageHeader';
-import * as firebase from 'firebase';
-import 'firebase/auth';
-import 'firebase/firestore';
+import firebase from 'firebase';
 
 const SignUp: React.SFC<ChildComponentProps> = ({ history }) => {
     const handleSignUp = useCallback(

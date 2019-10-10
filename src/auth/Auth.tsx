@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as firebase from 'firebase';
-import { User } from 'firebase';
-import 'firebase/auth';
-import 'firebase/firestore';
+import firebase, { User } from 'firebase';
 import { History } from 'history';
 
 export interface ChildComponentProps {
@@ -11,7 +8,7 @@ export interface ChildComponentProps {
 
 export const AuthContext = React.createContext({});
 
-export const AuthProvider: React.FC = (props) => {
+export const AuthProvider: React.FC = (props: any) => {
     const [currentUser, setCurrentUser] = useState<User | null>(null)
 
     useEffect(() => {
