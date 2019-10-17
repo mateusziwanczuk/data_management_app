@@ -5,6 +5,8 @@ import { NewOrderForm } from './components/NewOrderForm/NewOrderForm';
 import { UsersTable } from './components/UsersTable/UsersTable';
 import { AuthProvider } from './auth/Auth';
 import { User } from 'firebase/app';
+import { setUserAction } from './redux/auth/auth.actions';
+import { useDispatch } from 'react-redux';
 import SignUp from './auth/SignUp';
 import SignIn from './auth/SignIn';
 import firebase from 'firebase/app';
@@ -22,11 +24,13 @@ firebase.initializeApp({
 });
 
 export const App: React.FC = () => {
-  const [user, signUser] = useState<User | null>(null)
+  const [user, signUser] = useState<User | null>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
       firebase.auth().onAuthStateChanged(signUser);
-  }, []);
+      dispatch(setUserAction(user));
+  }, [dispatch, user]);
   
   return (
     <AuthProvider>
