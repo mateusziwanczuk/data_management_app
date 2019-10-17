@@ -1,9 +1,11 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 import { withRouter, Redirect } from 'react-router';
-import { AuthContext, ChildComponentProps } from './Auth';
 import { AuthPanel, AuthLabel, AuthInput, AuthButton, AuthForm, AuthText } from '../UIElements/Components';
 import { PageHeader } from '../components/PageHeader/PageHeader';
-import firebase from 'firebase';
+import firebase, { User } from 'firebase';
+import { ReduxStore } from '../redux/app/app.reducer';
+import { useSelector } from 'react-redux';
+import { ChildComponentProps } from '../_types/types';
 
 const SignIn: React.SFC<ChildComponentProps> = ({ history }) => {
     const handleSignIn = useCallback(
@@ -22,9 +24,9 @@ const SignIn: React.SFC<ChildComponentProps> = ({ history }) => {
         }, [history]
     )
 
-    const { currentUser }: any = useContext(AuthContext);
+    const user: User|null = useSelector((state: ReduxStore) => state.auth.authUser);
 
-    if (currentUser) return <Redirect to='/' />
+    if (user) return <Redirect to='/' />
 
     return (
         <AuthPanel>

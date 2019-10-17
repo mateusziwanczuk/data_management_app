@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../_auth/Auth';
+import React from 'react';
 import { Icon } from 'react-icons-kit';
 import { userTimes } from 'react-icons-kit/fa/userTimes';
 import { userPlus } from 'react-icons-kit/fa/userPlus';
 import firebase from 'firebase';
+import { useSelector } from 'react-redux';
+import { ReduxStore } from '../../redux/app/app.reducer';
 import './Nav.css';
 
 export const Nav: React.FC = () => {
-  const { currentUser }: any = useContext(AuthContext)
+  const currentUser = useSelector((state: ReduxStore) => state.auth.authUser)
 
   const signOut = () => {
 		firebase.auth().signOut();

@@ -3,11 +3,11 @@ import { AuthConstants } from "./auth.constants";
 import { produce } from "immer";
 import { User } from "firebase";
 
-export interface ReduxStore {
+export interface AuthStore {
     authUser: User | null
 }
 
-const initialState: ReduxStore = {
+const initialState: AuthStore = {
     authUser: null
 }
 

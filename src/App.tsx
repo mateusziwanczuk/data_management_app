@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 import { Nav } from './components/Nav/Nav';
 import { NewOrderForm } from './components/NewOrderForm/NewOrderForm';
 import { UsersTable } from './components/UsersTable/UsersTable';
-import { AuthProvider } from './_auth/Auth';
 import { User } from 'firebase/app';
 import { setUserAction } from './redux/auth/auth.actions';
 import { useDispatch } from 'react-redux';
@@ -33,13 +32,13 @@ export const App: React.FC = () => {
   }, [dispatch, user]);
   
   return (
-    <AuthProvider>
+    <>
       <Nav />
-      <Route exact path="/" component={user ? NewOrderForm : SignIn} />
-      <Route exact path="/sta-table" component={user ? UsersTable : SignIn} />
-      <Route exact path="/pri-table" component={user ? UsersTable : SignIn} />
+      <Route exact path="/" component={NewOrderForm} />
+      <Route exact path="/sta-table" component={UsersTable} />
+      <Route exact path="/pri-table" component={UsersTable} />
       <Route exact path="/sign-in" component={SignIn} />
       <Route exact path="/sign-up" component={SignUp} />
-    </AuthProvider>
+    </>
   );
 }
