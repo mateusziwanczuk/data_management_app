@@ -1,5 +1,7 @@
 import React from 'react';
 import { InputProps, FormProps, AuthTextProps } from './_types';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export const AuthPanel: React.FC = (props) => {
   return (
@@ -258,4 +260,18 @@ export const Error: React.FC = (props) => {
       {props.children}
     </span>
   )
+}
+
+export const Spinner: React.FC = () => {
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      progress: { margin: theme.spacing(2) }
+    })
+  );
+
+  const classes = useStyles();
+
+  return (
+    <CircularProgress className={classes.progress} />
+  );
 }
