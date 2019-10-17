@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../auth/Auth';
+import { AuthContext } from '../../_auth/Auth';
 import { Icon } from 'react-icons-kit';
 import { userTimes } from 'react-icons-kit/fa/userTimes';
 import { userPlus } from 'react-icons-kit/fa/userPlus';

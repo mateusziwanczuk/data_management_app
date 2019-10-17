@@ -3,12 +3,12 @@ import { Route } from 'react-router-dom';
 import { Nav } from './components/Nav/Nav';
 import { NewOrderForm } from './components/NewOrderForm/NewOrderForm';
 import { UsersTable } from './components/UsersTable/UsersTable';
-import { AuthProvider } from './auth/Auth';
+import { AuthProvider } from './_auth/Auth';
 import { User } from 'firebase/app';
 import { setUserAction } from './redux/auth/auth.actions';
 import { useDispatch } from 'react-redux';
-import SignUp from './auth/SignUp';
-import SignIn from './auth/SignIn';
+import SignUp from './_auth/SignUp';
+import SignIn from './_auth/SignIn';
 import firebase from 'firebase/app';
 import './App.css';
 
@@ -24,11 +24,11 @@ firebase.initializeApp({
 });
 
 export const App: React.FC = () => {
-  const [user, signUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
-      firebase.auth().onAuthStateChanged(signUser);
+      firebase.auth().onAuthStateChanged(setUser);
       dispatch(setUserAction(user));
   }, [dispatch, user]);
   

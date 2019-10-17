@@ -1,4 +1,4 @@
-import { NewOrderValues } from "../types/types";
+import { NewOrderValues } from "../_types/types";
 
 export const InitialFormValues: NewOrderValues = {
     first_name: '',
