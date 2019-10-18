@@ -2,12 +2,21 @@ import React from 'react';
 import { InputProps, FormProps, AuthTextProps } from './_types';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { colors } from './_colors';
+
+const { 
+  DMA_lightgrey, 
+  DMA_grey, 
+  DMA_red, 
+  DMA_white, 
+  DMA_azurblue,
+} = colors
 
 export const AuthPanel: React.FC = (props) => {
   return (
     <div 
       style = {{
-        background: 'white',
+        background: DMA_white,
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
@@ -26,7 +35,7 @@ export const AuthForm: React.FC<FormProps> = (props) => {
   return (
     <form
       style = {{
-        border: '1px solid rgb(98, 183, 253)',
+        border: `1px solid ${DMA_azurblue}`,
         margin: '0 auto',
         padding: '0% 3% 3% 3%',
         textAlign: 'center',
@@ -43,7 +52,7 @@ export const AuthLabel: React.FC = (props) => {
   return (
     <label
         style = {{
-          color: 'grey',
+          color: DMA_grey,
           display: 'block',
           fontSize: '.8rem',
           letterSpacing: '.2rem',
@@ -60,7 +69,7 @@ export const AuthInput: React.FC<InputProps> = (props) => {
   return (
     <input
         style = {{
-          border: '1px solid lightgrey',
+          border: `1px solid ${DMA_lightgrey}`,
           display: 'block',
           marginTop: '.5rem',
           fontSize: '1rem',
@@ -81,10 +90,10 @@ export const AuthButton: React.FC = (props) => {
   return (
     <button
         style = {{
-          background: 'rgb(98, 183, 253)',
+          background: DMA_azurblue,
           border: 'none',
-          boxShadow: '0 0 5px lightgrey',
-          color: 'white',
+          boxShadow: `0 0 5px ${DMA_lightgrey}`,
+          color: DMA_white,
           cursor: 'pointer',
           letterSpacing: '.2rem',
           padding: '.7rem 0',
@@ -100,7 +109,7 @@ export const AuthText: React.FC<AuthTextProps> = (props) => {
   return (
     <span
         style = {{
-          color: 'rgb(98, 183, 253)',
+          color: DMA_azurblue,
           cursor: 'pointer',
           display: 'block',
           letterSpacing: '.2rem',
@@ -142,7 +151,7 @@ export const Line: React.FC = () => {
   return (
     <div 
         style = {{
-            borderBottom: `1px solid lightgrey`,
+            borderBottom: `1px solid ${DMA_lightgrey}`,
         }}
     />
   );
@@ -162,7 +171,7 @@ export const Label: React.FC = (props) => {
   return (
     <label
         style = {{
-          color: 'grey',
+          color: DMA_grey,
           display: 'block',
           fontSize: '.8rem',
           letterSpacing: '.2rem',
@@ -179,8 +188,8 @@ export const LabelRadio: React.FC = (props) => {
   return (
     <label
         style = {{
-          border: '1px solid lightgrey',
-          color: 'grey',
+          border: `1px solid ${DMA_lightgrey}`,
+          color: DMA_grey,
           display: 'flex',
           fontSize: '.8rem',
           letterSpacing: '.1rem',
@@ -198,7 +207,7 @@ export const Input: React.FC<InputProps> = (props) => {
   return (
     <input
         style = {{
-          border: '1px solid lightgrey',
+          border: `1px solid ${DMA_lightgrey}`,
           display: 'block',
           marginTop: '.5rem',
           fontSize: '1rem',
@@ -234,10 +243,10 @@ export const Button: React.FC = (props) => {
   return (
     <button
         style = {{
-          background: 'rgb(98, 183, 253)',
+          background: DMA_azurblue,
           border: 'none',
-          boxShadow: '0 0 5px lightgrey',
-          color: 'white',
+          boxShadow: `0 0 5px ${DMA_lightgrey}`,
+          color: DMA_white,
           cursor: 'pointer',
           letterSpacing: '.2rem',
           padding: '.7rem 0',
@@ -253,7 +262,7 @@ export const Error: React.FC = (props) => {
   return (
     <span
       style = {{
-        color: 'red',
+        color: DMA_red,
         fontSize: '10px',
       }}  
     >
