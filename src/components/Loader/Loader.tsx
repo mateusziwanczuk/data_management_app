@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReduxStore } from '../../redux/app/app.reducer';
 import { useSelector } from 'react-redux';
-import { Spinner } from '../../UIElements/Components';
+import { Spinner } from '../../uiComponents/app';
 
 export const Loader: React.FC = ({ children }) => {
     const isLoading = useSelector((state: ReduxStore) => state.app.isLoading);

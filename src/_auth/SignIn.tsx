@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { withRouter, Redirect } from 'react-router';
-import { AuthPanel, AuthLabel, AuthInput, AuthButton, AuthForm, AuthText } from '../UIElements/Components';
+import { AuthPanel, AuthLabel, AuthInput, AuthButton, AuthForm, AuthText } from '../uiComponents/auth';
 import { PageHeader } from '../components/PageHeader/PageHeader';
 import firebase, { User } from 'firebase';
 import { ReduxStore } from '../redux/app/app.reducer';

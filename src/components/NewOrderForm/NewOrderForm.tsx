@@ -1,10 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { PageHeader } from '../PageHeader/PageHeader';
-import { Container, FlexContainer, Label, LabelRadio, Input, InputRadio, Button, Error, Form } from '../../UIElements/Components';
 import { InitialFormValues } from '../../_helpers/InitialValues.helpers';
 import { NewOrderValues } from '../../_types/types';
 import { formatInputFeeValue, formatDateValue } from '../../_helpers/InputFormatters.helpers';
 import { isDateValid } from '../../_helpers/InputValidation.helpers';
+import { Container, FlexContainer, Button, Error } from '../../uiComponents/app';
+import { Input, Label, Form, LabelRadio, InputRadio } from '../../uiComponents/form';
 import './NewOrderForm.css';
 
 export const NewOrderForm: React.FC = () => {
