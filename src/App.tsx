@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Nav } from './components/Nav/Nav';
 import { NewOrderForm } from './components/NewOrderForm/NewOrderForm';
 import { UsersTable } from './components/UsersTable/UsersTable';
@@ -34,13 +34,13 @@ export const App: React.FC = () => {
   return (
     <>
       <Nav user={user}/>
-      <Router>
+      <Switch>
         <Route exact path="/" component={NewOrderForm} />
         <Route exact path="/sta-table" component={UsersTable} />
         <Route exact path="/pri-table" component={UsersTable} />
         <Route exact path="/sign-in" component={SignIn} />
         <Route exact path="/sign-up" component={SignUp} />
-      </Router>
+      </Switch>
     </>
   )
 }
