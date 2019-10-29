@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Nav } from './components/Nav/Nav';
 import { NewOrderForm } from './components/NewOrderForm/NewOrderForm';
 import { UsersTable } from './components/UsersTable/UsersTable';
 import { User } from 'firebase/app';
 import { setUserAction } from './redux/auth/auth.actions';
 import { useDispatch } from 'react-redux';
-import { Loader } from './components/Loader/Loader';
 import SignUp from './_auth/SignUp';
 import SignIn from './_auth/SignIn';
 import firebase from 'firebase/app';
@@ -33,13 +32,15 @@ export const App: React.FC = () => {
   }, [dispatch, user]);
   
   return (
-    <Loader>
-      <Nav />
-      <Route exact path="/" component={NewOrderForm} />
-      <Route exact path="/sta-table" component={UsersTable} />
-      <Route exact path="/pri-table" component={UsersTable} />
-      <Route exact path="/sign-in" component={SignIn} />
-      <Route exact path="/sign-up" component={SignUp} />
-    </Loader>
-  );
+    <>
+      <Nav user={user}/>
+      <Router>
+        <Route exact path="/" component={NewOrderForm} />
+        <Route exact path="/sta-table" component={UsersTable} />
+        <Route exact path="/pri-table" component={UsersTable} />
+        <Route exact path="/sign-in" component={SignIn} />
+        <Route exact path="/sign-up" component={SignUp} />
+      </Router>
+    </>
+  )
 }
