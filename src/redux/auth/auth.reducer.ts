@@ -19,6 +19,7 @@ export const authReducer = (state = initialState, action: AnyAction) =>
                 return;
             case AuthConstants.SIGN_OUT:
                 draftState.authUser = null;
+                return;
             default:
                 return state
         }
