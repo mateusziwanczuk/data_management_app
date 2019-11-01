@@ -10,20 +10,23 @@ import './NewOrderForm.css';
 
 export const NewOrderForm: React.FC = () => {
   const [inputsValues, setInputsValues] = useState<NewOrderValues>(InitialFormValues);
-  const [isFormValid, handleFormValidation] = useState<boolean | undefined>(undefined)
+  const [isFormValid, handleFormValidation] = useState<boolean | undefined>(undefined);
+  const [isValidating, startValidation] = useState<boolean>(false)
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    checkFormValidation();
 
     if (event && isFormValid) {
-      return console.log(inputsValues)
-    } 
+      console.log(inputsValues)
+    } else {
+      startValidation(true)
+    }
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.persist();
     setInputsValues((inputsValues: NewOrderValues) => ({...inputsValues, [event.target.name]: event.target.value}));
+    checkFormValidation();
   }
 
   const checkFormValidation = () => {
@@ -40,7 +43,7 @@ export const NewOrderForm: React.FC = () => {
       : handleFormValidation(false)
   }
 
-  const showValidationError = (value: string) => {
+  const validateInputValue = (value: string) => {
     return value.length === 0 ? <Error>This field is required</Error> : null
   }
 
@@ -62,16 +65,16 @@ export const NewOrderForm: React.FC = () => {
                 onChange={handleInputChange} 
                 value={first_name}
               />
-              { isFormValid === false && showValidationError(first_name) }
+              { isValidating && validateInputValue(first_name) }
             </Label>
             <Label>Last name
               <Input name="last_name" onChange={handleInputChange} value={last_name}/>
-              { isFormValid === false && showValidationError(last_name) }
+              { isValidating && validateInputValue(last_name) }
             </Label>
           </FlexContainer>
           <Label>E-mail
             <Input name="email" onChange={handleInputChange} value={email}/>
-            { isFormValid === false && showValidationError(email) }
+            { isValidating && validateInputValue(email) }
           </Label>
           <Label>Service expire date
             <Input 
@@ -80,16 +83,16 @@ export const NewOrderForm: React.FC = () => {
               value={formatDateValue(service_expire_date)}
               placeholder={'DD/MM/YYYY'}
             />
-            { isFormValid === false && validateDateInput(formatDateValue(service_expire_date)) }
+            { isValidating && validateDateInput(formatDateValue(service_expire_date)) }
           </Label>
           <FlexContainer>
             <Label>Client number
               <Input name="client_number" onChange={handleInputChange} value={client_number} />
-              { isFormValid === false && showValidationError(client_number) }
+              { isValidating && validateInputValue(client_number) }
             </Label>
             <Label>Order number
               <Input name="order_number" onChange={handleInputChange} value={order_number}/>
-              { isFormValid === false && showValidationError(order_number) }
+              { isValidating && validateInputValue(order_number) }
             </Label>
           </FlexContainer>
           <span className={'OrderTypeHeader'}>Order type</span>
@@ -102,7 +105,7 @@ export const NewOrderForm: React.FC = () => {
             </LabelRadio>
           </FlexContainer>
           <Label>
-            { isFormValid === false && showValidationError(order_type) }
+            { isValidating && validateInputValue(order_type) }
           </Label>
           <Label>Transfer fee
             <Input 
@@ -111,7 +114,7 @@ export const NewOrderForm: React.FC = () => {
               value={formatInputFeeValue(transfer_fee)} 
               placeholder={'€'}
             />
-            { isFormValid === false && showValidationError(formatInputFeeValue(transfer_fee)) }
+            { isValidating && validateInputValue(formatInputFeeValue(transfer_fee)) }
           </Label>
           <Button>SUBMIT</Button>
         </Form>
