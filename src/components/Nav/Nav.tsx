@@ -15,7 +15,7 @@ export const Nav: React.FC<any> = (props: User) => {
 
   return (
     <div className={'NavContainer'}>
-      <a href='/' className={'AppLogo'}>DMA</a>
+      <Link to='/' className={'AppLogo'}>DMA</Link>
       <div className={'RouteLinks'}>
         <Link to={user ? '/' : '/sign-in'}>NEW ORDER</Link>
         <Link to={user ? '/sta-table' : '/sign-in'}>STA ORDERS</Link>

@@ -14,7 +14,7 @@ export const Container: React.FC = (props) => {
   return (
     <div 
         style = {{
-            margin: '0 auto 10%',
+            margin: '0 auto 5%',
             width: '60vw',
         }}
     >

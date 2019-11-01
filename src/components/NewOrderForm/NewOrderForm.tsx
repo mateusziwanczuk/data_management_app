@@ -17,7 +17,7 @@ export const NewOrderForm: React.FC = () => {
     event.preventDefault();
 
     if (event && isFormValid) {
-      console.log(inputsValues)
+      alert('New order added!')
     } else {
       startValidation(true)
     }
